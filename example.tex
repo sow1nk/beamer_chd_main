@@ -1,0 +1,71 @@
+\documentclass{ctexbeamer}
+\usetheme{chd}
+\usepackage{lipsum}
+\usepackage{ulem} % 下划线
+\usefonttheme{serif}  % 使用衬线字体
+\usepackage{calligra} % 手写体
+
+\title{CHD Beamer Template}
+\author{Ruixiao Xu}
+\institute{School of Information Engineering\\Chang'an University}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}{Contents}
+  \tableofcontents
+\end{frame}
+
+\section{section 1}
+\begin{frame}{\underline{Introduction}}
+  \alert{CHD Beamer Template} is an unofficial theme for Chang'an University.
+\end{frame}
+
+\begin{frame}{\underline{Sample Page}}
+  A matrix $A$ is called normal, if $AA^*=A^*\mskip-2muA$.
+\end{frame}
+
+\section{section 2}
+\subsection{section 2.2}
+\begin{frame}{\underline{Theorem environments}}
+  \begin{theorem}[Sample theorem]
+    Hello, there
+  \end{theorem}
+  \begin{proof}
+    Let $x \in \mathbb{R}$. Assume $x > 0$. Then, we have
+    \begin{equation}
+      x^2 > 0.
+    \end{equation}
+    Proved.
+  \end{proof}
+\end{frame}
+
+\begin{frame}{\underline{Enumerate and itemize}}
+  \begin{enumerate}
+    \item Hello
+    \item There
+  \end{enumerate}
+  \begin{itemize}
+    \item Hello
+    \item There
+          \begin{itemize}
+            \item Subitem
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\underline{Blocks}}
+  \itshape\lipsum[3]
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \Huge\calligra{Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}
