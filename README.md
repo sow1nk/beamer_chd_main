@@ -8,8 +8,9 @@ Usage: Copy `chdblackground.pdf`, `chdbluelogo.pdf` and `beamerthemechd.sty` to 
 ```
 \usetheme{chd}
 ```
-in your beamer document.
+In your beamer document.
 
 <!-- ![](images/example.png) -->
-![](images/example_1.png)
-![](images/example_2.png)
+### Example
+[Example PDF 1](images/example_01.pdf)  
+[Example PDF 2](images/example_02.pdf)
