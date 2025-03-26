@@ -2,8 +2,9 @@
 \usetheme{chd}
 \usepackage{lipsum}
 \usepackage{ulem} % 下划线
-\usefonttheme{serif}  % 使用衬线字体
+\usefonttheme[onlymath]{serif}  % 仅数学公式使用衬线字体
 \usepackage{calligra} % 手写体
+\usepackage{tcolorbox}
 
 \title{CHD Beamer Template}
 \author{Ruixiao Xu}
@@ -60,6 +61,18 @@
 
 \begin{frame}{\underline{Blocks}}
   \itshape\lipsum[3]
+\end{frame}
+
+\begin{frame}{\underline{Blocks}}
+  \begin{exampleblock}{Example}
+    This is an example block in beamer.
+  \end{exampleblock}
+  \begin{tcolorbox}
+    This is a tcolorbox.
+  \end{tcolorbox}
+  \begin{tcolorbox}[colframe=purple!70,colback=red!10]
+    This is a tcolorbox with red frame.
+  \end{tcolorbox}
 \end{frame}
 
 \begin{frame}
