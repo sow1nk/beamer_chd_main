@@ -37,9 +37,11 @@
 \section{section 2}
 \subsection{section 2.2}
 \begin{frame}{\underline{Theorem environments}}
+
   \begin{theorem}[Sample theorem]
     Hello, there
   \end{theorem}
+
   \begin{proof}
     Let $x \in \mathbb{R}$. Assume $x > 0$. Then, we have
     \begin{equation}
@@ -68,9 +70,17 @@
 \end{frame}
 
 \begin{frame}{\underline{Blocks}}
+  \begin{block}{Example}
+    This is a normal block in beamer.
+  \end{block}
+
   \begin{exampleblock}{Example}
     This is an example block in beamer.
   \end{exampleblock}
+
+  \begin{alertblock}{Example}
+    This is an alert block in beamer.
+  \end{alertblock}
 
   \begin{tcolorbox}
     This is a tcolorbox.

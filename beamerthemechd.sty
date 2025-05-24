@@ -51,7 +51,7 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
     \path (0,0) -- (\paperwidth,\paperheight);
-    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{sources/chdbackground.pdf}};
+    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{sources/chdbackground_blue.pdf}};
   \end{tikzpicture}
 }
 
@@ -84,10 +84,10 @@
 
 % --------------------------------- 预设颜色 --------------------------------- %
 % \definecolor{chdbeamer@base}{RGB}{0, 64, 152} % 底色：孔雀蓝
-\definecolor{chdbeamer@base}{RGB}{60, 69, 147}
+\definecolor{chd@normalblock}{RGB}{60, 69, 147}
 \definecolor{chdbeamer@graybase}{RGB}{240, 240, 240}
-\definecolor{chdbeamer@gray}{RGB}{130, 130, 130}
-\definecolor{chdbeamer@orange}{RGB}{240, 140, 0}
+\definecolor{chd@exampleblock}{RGB}{97, 101, 184}
+\definecolor{chd@alertblock}{RGB}{201, 90, 92}
 \definecolor{chdbeamer@red}{RGB}{210, 26, 66}
 \definecolor{chdbeamer@green}{RGB}{0, 127, 0}
 
@@ -95,28 +95,30 @@
 \setbeamertemplate{theorems}[numbered]
 
 % 设置证明区块
-\addtobeamertemplate{proof begin}{%
-  \setbeamercolor{block title}{fg=white, bg=chdbeamer@red!80!white}
+\addtobeamertemplate{proof begin}{
+  \setbeamercolor{block title}{fg=white, bg=chdbeamer@red!50!white}
   \setbeamercolor{block body}{fg=black, bg=chdbeamer@red!20!white}
 }
+
 
 % 设置展示块圆角 是否有阴影显示
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
-% 设置展示块，一般块、示例块、警醒块 (block title) 的标题颜色，前景色与背景色
-\setbeamercolor{block title}{fg=white, bg=chdbeamer@base}
+
+% ---------------------- 标题颜色设置 ----------------- %
+\setbeamercolor{block title}{fg=white, bg=chd@normalblock}
 \setbeamercolor{block title example}{
-  use=alerted text, fg=white, bg=chdbeamer@gray}
+  use=alerted text, fg=white, bg=chd@exampleblock}
 \setbeamercolor{block title alerted}{
-  use=alerted text, fg=white, bg=chdbeamer@orange}
+  use=alerted text, fg=white, bg=chd@alertblock}
 
 % 设置展示块内容的文本颜色、背景颜色
-\setbeamercolor{block body}{%
+\setbeamercolor{block body}{
   parent=normal text, use=block title,
   bg=block title.bg!10!bg}
-\setbeamercolor{block body example}{%
-  parent=normal text, bg=chdbeamer@graybase}
-\setbeamercolor{block body alerted}{%
+\setbeamercolor{block body example}{
+  parent=normal text, bg=chd@exampleblock!10!bg}
+\setbeamercolor{block body alerted}{
   parent=normal text, use=block title alerted,
   bg=block title alerted.bg!10!bg}
 
