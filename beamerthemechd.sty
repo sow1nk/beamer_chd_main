@@ -23,6 +23,15 @@
 
 
 % Titlepage 模版
+% 
+% - 使用 `\setbeamertemplate{title page}` 命令自定义标题页布局。
+% - 使用 `\includegraphics` 命令插入一个高度为文本高度 10% 的 logo 图像（`chdbluelogo.pdf`）。
+% - 通过 `\vskip` 命令添加垂直间距以调整布局。
+% - 标题通过 `\usebeamerfont{title}` 和 `\usebeamercolor[fg]{title}` 命令显示，
+%   并使用 `\textbf` 将标题文本加粗。
+% - 使用 TikZ 绘制标题下方的水平线，样式为超粗的蓝色线条。
+% - 作者、机构和日期显示在标题下方，每部分之间用垂直间距分隔。
+% - 使用 `\begin{spacing}{1.2}` 环境调整标题文本的行间距。
 \setbeamertemplate{title page}{
   \includegraphics[height=0.1\textheight]{sources/chdbluelogo.pdf}
   \vskip3em
@@ -72,5 +81,43 @@
   \end{beamercolorbox}
 }
 
+
+% --------------------------------- 预设颜色 --------------------------------- %
+% \definecolor{chdbeamer@base}{RGB}{0, 64, 152} % 底色：孔雀蓝
+\definecolor{chdbeamer@base}{RGB}{60, 69, 147}
+\definecolor{chdbeamer@graybase}{RGB}{240, 240, 240}
+\definecolor{chdbeamer@gray}{RGB}{130, 130, 130}
+\definecolor{chdbeamer@orange}{RGB}{240, 140, 0}
+\definecolor{chdbeamer@red}{RGB}{210, 26, 66}
+\definecolor{chdbeamer@green}{RGB}{0, 127, 0}
+
+% 设置定理区块显示序号
+\setbeamertemplate{theorems}[numbered]
+
+% 设置证明区块
+\addtobeamertemplate{proof begin}{%
+  \setbeamercolor{block title}{fg=white, bg=chdbeamer@red!80!white}
+  \setbeamercolor{block body}{fg=black, bg=chdbeamer@red!20!white}
+}
+
+% 设置展示块圆角 是否有阴影显示
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% 设置展示块，一般块、示例块、警醒块 (block title) 的标题颜色，前景色与背景色
+\setbeamercolor{block title}{fg=white, bg=chdbeamer@base}
+\setbeamercolor{block title example}{
+  use=alerted text, fg=white, bg=chdbeamer@gray}
+\setbeamercolor{block title alerted}{
+  use=alerted text, fg=white, bg=chdbeamer@orange}
+
+% 设置展示块内容的文本颜色、背景颜色
+\setbeamercolor{block body}{%
+  parent=normal text, use=block title,
+  bg=block title.bg!10!bg}
+\setbeamercolor{block body example}{%
+  parent=normal text, bg=chdbeamer@graybase}
+\setbeamercolor{block body alerted}{%
+  parent=normal text, use=block title alerted,
+  bg=block title alerted.bg!10!bg}
 
 \mode<all>

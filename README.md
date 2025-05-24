@@ -12,5 +12,8 @@ In your beamer document.
 
 <!-- ![](images/example.png) -->
 ### Example
-[Example PDF 1](images/example_01.pdf)  
-[Example PDF 2](images/example_02.pdf)
+![](images/example_1.png)
+---
+![](images/example_2.png)
+---
+![](images/example_3.png)
