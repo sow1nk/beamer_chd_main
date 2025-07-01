@@ -17,3 +17,15 @@ In your beamer document.
 ![](images/example_2.png)
 ---
 ![](images/example_3.png)
+---
+![](images/example_4.png)
+---
+![](images/example_5.png)
+---
+![](images/example_6.png)
+---
+![](images/example_7.png)
+---
+![](images/example_8.png)
+---
+![](images/example_9.png)
