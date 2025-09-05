@@ -12,6 +12,15 @@
 \definecolor{blue}{RGB}{60,69,147} % chd
 \usecolortheme[RGB={60,69,147}]{structure}
 
+% 设置图注样式
+\usepackage{caption}
+\captionsetup{
+  font=footnotesize,
+  labelsep=colon,
+  justification=centering
+}
+\setbeamertemplate{caption}[numbered]
+
 % 显示章节编号
 \setbeamertemplate{section in toc}[sections numbered]
 % 显示小节编号
