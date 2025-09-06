@@ -15,6 +15,8 @@
 \usepackage{adjustbox} % 表格调整
 \usepackage{longtable} % 长表格
 
+\usepackage[colorful,cn]{chdtheoremstyle} % 定理环境 配色和语言选项
+
 \title{CHD Beamer Template}
 \author{\textbf{Ruixiao Xu}}
 \institute{School of Information Engineering\\Chang'an University}
@@ -146,6 +148,55 @@
     \item \texttt{\textcolor{red}{adjustbox}}宏包动态调整表格大小和位置
     \item \texttt{\textcolor{green}{tabular}}环境创建表格结构
   \end{itemize}
+\end{frame}
+
+\begin{frame}{\underline{CHD Theorem Environments}}
+  % 例子环境 - 用于展示具体实例
+  \begin{chdexample}{chdexample 环境示例}
+    这是一个 \texttt{chdexample} 环境的示例。
+  \end{chdexample}
+  % 定理环境 - 用于重要的数学定理
+  \begin{chdtheorem}{chdtheorem 环境定理}
+    这是一个 \texttt{chdtheorem} 环境的示例。
+  \end{chdtheorem}
+  % 注释环境 - 用于补充说明
+  \begin{chdremark}{chdremark 环境注释}
+    这是一个 \texttt{chdremark} 环境的示例。
+  \end{chdremark}
+  % 证明环境 - 用于数学证明
+  \begin{chdproof}{chdproof 环境证明}
+    这是一个 \texttt{chdproof} 环境的示例。
+  \end{chdproof}
+\end{frame}
+
+\begin{frame}{\underline{CHD Theorem Environments}}
+  % 性质环境 - 用于描述数学性质
+  \begin{chdproperty}{chdproperty 环境性质}
+    这是一个 \texttt{chdproperty} 环境的示例。
+  \end{chdproperty}
+  % 命题环境 - 用于数学命题
+  \begin{chdproposition}{chdproposition 环境命题}
+    这是一个 \texttt{chdproposition} 环境的示例。
+  \end{chdproposition}
+  % 算法环境 - 用于描述算法步骤
+  \begin{chdalgorithm}{chdalgorithm 环境算法}
+    这是一个 \texttt{chdalgorithm} 环境的示例。
+  \end{chdalgorithm}
+  % 公理环境 - 用于数学公理
+  \begin{chdaxiom}{chdaxiom 环境公理}
+    这是一个 \texttt{chdaxiom} 环境的示例。
+  \end{chdaxiom}
+\end{frame}
+
+\begin{frame}{\underline{CHD Theorem Environments}}
+  % 条件环境 - 用于描述数学条件
+  \begin{chdcondition}{chdcondition 环境条件}
+    这是一个 \texttt{chdcondition} 环境的示例。
+  \end{chdcondition}
+  % 引理环境 - 用于辅助证明
+  \begin{chdlemma}{chdlemma 环境引理}
+    这是一个 \texttt{chdlemma} 环境的示例。
+  \end{chdlemma}
 \end{frame}
 
 \begin{frame}

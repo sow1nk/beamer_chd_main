@@ -1,0 +1,333 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{chdtheoremstyle}[2024/11/01 v1.0, CHD Theorem Style Package]
+
+% ----------------
+% 必需的包
+% ----------------
+\RequirePackage{tcolorbox}
+\RequirePackage{xparse}
+\RequirePackage{ifthen}
+\RequirePackage{varioref}
+\RequirePackage{cleveref}
+\RequirePackage{calc}
+
+% tcolorbox 库
+\tcbuselibrary{skins, breakable, xparse, listings}
+
+% ----------------
+% 基础颜色定义（如果未定义）
+% ----------------
+\providecolor{PrimaryC}{RGB}{60,69,147}           % 主色调
+\providecolor{BlockExampleC}{RGB}{128,128,128}  % 示例块颜色
+\providecolor{BlockDefinitionC}{RGB}{22,88,165} % 定义块颜色  
+\providecolor{BlockLemmaC}{RGB}{0,153,0}        % 引理块颜色
+\providecolor{BlockConditionC}{RGB}{255,140,0}  % 条件块颜色
+
+% ----------------
+% 选项处理
+% ----------------
+\newif\ifchdtheorem@colorful
+\newif\ifchdtheorem@followtheme
+\newif\ifchdtheorem@allgrey
+\newif\ifchdtheorem@cn
+
+\DeclareOption{colorful}{\chdtheorem@colorfultrue}
+\DeclareOption{followtheme}{\chdtheorem@followthemetrue}
+\DeclareOption{allgrey}{\chdtheorem@allgreytrue}
+\DeclareOption{cn}{\chdtheorem@cntrue}
+\DeclareOption{en}{\chdtheorem@cnfalse}
+
+\ExecuteOptions{colorful}
+\ProcessOptions\relax
+
+% ----------------
+% 语言设置和名称定义
+% ----------------
+\ifchdtheorem@cn
+  % 中文名称
+  \def\chd@theonametheorem    {定理}
+  \def\chd@theonameexample    {例}
+  \def\chd@theonamealgorithm  {算法}
+  \def\chd@theonamedefinition {定义}
+  \def\chd@theonameaxiom      {公理}
+  \def\chd@theonameproperty   {性质}
+  \def\chd@theonameproposition{命题}
+  \def\chd@theonamelemma      {引理}
+  \def\chd@theonamecorollary  {推论}
+  \def\chd@theonamecondition  {条件}
+  \def\chd@theonameconclusion {结论}
+  \def\chd@theonameassumption {假设}
+  \def\chd@theonameremark     {注}
+  \def\chd@theonameproof      {证明}
+  %
+  \def\chd@theonametheorem@pl    {定理}
+  \def\chd@theonameexample@pl    {例}
+  \def\chd@theonamealgorithm@pl  {算法}
+  \def\chd@theonamedefinition@pl {定义}
+  \def\chd@theonameaxiom@pl      {公理}
+  \def\chd@theonameproperty@pl   {性质}
+  \def\chd@theonameproposition@pl{命题}
+  \def\chd@theonamelemma@pl      {引理}
+  \def\chd@theonamecorollary@pl  {推论}
+  \def\chd@theonamecondition@pl  {条件}
+  \def\chd@theonameconclusion@pl {结论}
+  \def\chd@theonameassumption@pl {假设}
+  \def\chd@theonameremark@pl     {注}
+  \def\chd@theonameproof@pl      {证明}
+\else
+  % 英文名称
+  \def\chd@theonametheorem    {Theorem}
+  \def\chd@theonameexample    {Example}
+  \def\chd@theonamealgorithm  {Algorithm}
+  \def\chd@theonamedefinition {Definition}
+  \def\chd@theonameaxiom      {Axiom}
+  \def\chd@theonameproperty   {Property}
+  \def\chd@theonameproposition{Proposition}
+  \def\chd@theonamelemma      {Lemma}
+  \def\chd@theonamecorollary  {Corollary}
+  \def\chd@theonamecondition  {Condition}
+  \def\chd@theonameconclusion {Conclusion}
+  \def\chd@theonameassumption {Assumption}
+  \def\chd@theonameremark     {Remark}
+  \def\chd@theonameproof      {Proof}
+  %
+  \def\chd@theonametheorem@pl    {Theorems}
+  \def\chd@theonameexample@pl    {Examples}
+  \def\chd@theonamealgorithm@pl  {Algorithms}
+  \def\chd@theonamedefinition@pl {Definitions}
+  \def\chd@theonameaxiom@pl      {Axioms}
+  \def\chd@theonameproperty@pl   {Properties}
+  \def\chd@theonameproposition@pl{Propositions}
+  \def\chd@theonamelemma@pl      {Lemmas}
+  \def\chd@theonamecorollary@pl  {Corollaries}
+  \def\chd@theonamecondition@pl  {Conditions}
+  \def\chd@theonameconclusion@pl {Conclusions}
+  \def\chd@theonameassumption@pl {Assumptions}
+  \def\chd@theonameremark@pl     {Remarks}
+  \def\chd@theonameproof@pl      {Proofs}
+\fi
+
+% ----------------
+% 标签分隔符
+% ----------------
+\def\kvtcb@label@sep{:}
+
+% ----------------
+% 定理样式基础函数
+% ----------------
+\def\chd@tcbstyletheo#1#2{%
+% #1: 关键字 - 样式类型
+% #2: 颜色
+  \tcbset{tcb#1style/.style={empty,%
+    attach boxed title to top left,%
+    boxed title style={empty,%
+      size=minimal,%
+      toprule=2pt, top=4pt, left=1pt, right=1pt,%
+      overlay={%
+        \draw [#2, line width=2.5pt, rounded corners=1pt]%
+          ([yshift=-1pt]frame.north west) -- ([yshift=-1pt]frame.north east);
+        \draw [white!80!#2, line width=2.5pt, rounded corners=1pt]%
+          ([xshift=.25em,yshift=-1pt]frame.north west)%
+          -- ([xshift=.5em, yshift=-1pt]frame.north west);
+      },%
+    },%
+    coltitle=#2!90!black, fonttitle=\normalsize\bfseries,%
+    before=\par\medskip\noindent, vfill before first,%
+    parbox=false, boxsep=0pt,%
+    top=4pt, bottom=4pt, left=0pt, right=2mm,%
+    breakable, break at=.78\textheight,%
+    pad at break*=.5ex,%
+    overlay unbroken={%
+      \draw [#2, line width=1pt, rounded corners=1pt]%
+        ([yshift=-1pt]title.north east)%
+        -- ([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)%
+        -- ([xshift=-0.5pt]frame.south east) -- (frame.south west);
+      \draw [white!80!#2, line width=1pt, rounded corners=1pt]%
+        ([xshift=2em]frame.south west) -- ([xshift=5em]frame.south west);
+    },%
+    overlay first={%
+      \draw [#2, line width=1pt, rounded corners=1pt]%
+        ([yshift=-1pt]title.north east)%
+        -- ([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)%
+        -- ([xshift=-0.5pt]frame.south east);
+    },%
+    overlay middle={%
+      \draw [#2, line width=1pt, rounded corners=1pt]%
+        ([xshift=-0.5pt]frame.north east) -- ([xshift=-0.5pt]frame.south east);
+    },%
+    overlay last={%
+      \draw [#2, line width=1pt, rounded corners=1pt]%
+        ([xshift=-0.5pt]frame.north east) -- ([xshift=-0.5pt]frame.south east)%
+        -- (frame.south west);
+      \draw [white!80!#2, line width=1pt, rounded corners=1pt]%
+        ([xshift=2em]frame.south west) -- ([xshift=5em]frame.south west);
+    }%
+  }}%
+}
+
+% ----------------
+% 应用样式
+% ----------------
+\ifchdtheorem@colorful
+  \chd@tcbstyletheo{theo}{PrimaryC}
+  \chd@tcbstyletheo{exa}{BlockExampleC}
+  \chd@tcbstyletheo{def}{BlockDefinitionC}
+  \chd@tcbstyletheo{lem}{BlockLemmaC}
+  \chd@tcbstyletheo{cond}{BlockConditionC}
+\else\ifchdtheorem@followtheme
+  \chd@tcbstyletheo{theo}{PrimaryC}
+  \chd@tcbstyletheo{exa}{PrimaryC}
+  \chd@tcbstyletheo{def}{PrimaryC}
+  \chd@tcbstyletheo{lem}{PrimaryC}
+  \chd@tcbstyletheo{cond}{PrimaryC}
+\else\ifchdtheorem@allgrey
+  \chd@tcbstyletheo{theo}{BlockExampleC}
+  \chd@tcbstyletheo{exa}{BlockExampleC}
+  \chd@tcbstyletheo{def}{BlockExampleC}
+  \chd@tcbstyletheo{lem}{BlockExampleC}
+  \chd@tcbstyletheo{cond}{BlockExampleC}
+\fi\fi\fi
+
+% ----------------
+% 计数器定义
+% ----------------
+\newcounter{chd@theorem@count}
+\newcounter{chd@example@count}
+\newcounter{chd@algorithm@count}
+\newcounter{chd@definition@count}
+\newcounter{chd@axiom@count}
+\newcounter{chd@property@count}
+\newcounter{chd@proposition@count}
+\newcounter{chd@lemma@count}
+\newcounter{chd@corollary@count}
+\newcounter{chd@condition@count}
+\newcounter{chd@conclusion@count}
+\newcounter{chd@assumption@count}
+\newcounter{chd@remark@count}
+\newcounter{chd@proof@count}
+
+% ----------------
+% 定理环境创建函数
+% ----------------
+\def\chd@theo#1#2#3{%
+% #1: 后缀 - 环境名称
+% #2: 前缀 - 样式类型  
+% #3: 前缀 - 标签
+  % 无星号环境
+  \DeclareTColorBox[use counter=chd@#1@count,%
+    number within=section, reset counter on overlays]%
+    {chdoriginal#1}{ O{} m !s !O{} }{%
+      title={%
+        \IfBooleanTF{##3}{\ifstrempty{##2}{}{##2}}{%
+          \csname chd@theoname#1\endcsname%
+          ~\thetcbcounter\ifstrempty{##2}{}{:~##2}%
+        }%
+      },%
+      IfValueT={##4}{label={#3\kvtcb@label@sep##4}},%
+      nameref={##2}, #2style, ##1%
+  }%
+  
+  % 带星号环境
+  \DeclareTColorBox[no counter]%
+    {chdoriginal#1*}{ O{} m !s !O{} }{%
+      title={%
+        \IfBooleanTF{##3}{\ifstrempty{##2}{}{##2}}{%
+          \csname chd@theoname#1\endcsname%
+          \ifstrempty{##2}{}{:~##2}%
+        }%
+      },%
+      IfValueT={##4}{label={#3\kvtcb@label@sep##4}},%
+      nameref={##2}, #2style, ##1%
+  }%
+  
+  % 用户接口环境
+  \DeclareDocumentEnvironment{chd#1}%
+    { s D<>{1-} O{} m !s !O{} }{%
+      \begin{actionenv}<##2>%
+      \IfBooleanTF{##1}%
+        {\IfBooleanTF{##5}%
+          {\begin{chdoriginal#1*}[##3]{##4}*[##6]}%
+          {\begin{chdoriginal#1*}[##3]{##4}[##6]}}%
+        {\IfBooleanTF{##5}%
+          {\begin{chdoriginal#1}[##3]{##4}*[##6]}%
+          {\begin{chdoriginal#1}[##3]{##4}[##6]}}%
+    }{\IfBooleanTF{##1}%
+        {\end{chdoriginal#1*}}%
+        {\end{chdoriginal#1}}%
+      \end{actionenv}%
+  }%
+  
+  % 智能引用设置
+  \Crefname{chd@#1@count}%
+    {\csname chd@theoname#1\endcsname}%
+    {\csname chd@theoname#1@pl\endcsname}
+}
+
+% ----------------
+% 创建具体的定理环境
+% ----------------
+\chd@theo{theorem}    {tcbtheo}{theo}
+\chd@theo{example}    {tcbexa} {exam}
+\chd@theo{algorithm}  {tcbexa} {algo}
+\chd@theo{definition} {tcbdef} {def}
+\chd@theo{axiom}      {tcbtheo}{axio}
+\chd@theo{property}   {tcbdef} {prope}
+\chd@theo{proposition}{tcbdef} {propo}
+\chd@theo{lemma}      {tcblem} {lemm}
+\chd@theo{corollary}  {tcblem} {coro}
+\chd@theo{condition}  {tcbcond}{cond}
+\chd@theo{conclusion} {tcblem} {conc}
+\chd@theo{assumption} {tcbcond}{assu}
+
+% ----------------
+% 特殊环境：remark
+% ----------------
+\DeclareTColorBox[use counter=chd@remark@count,%
+  no counter]{chdoriginalremark}{ O{} m !O{} }{%
+    title={\chd@theonameremark%
+      \ifstrempty{#2}{}{:~#2}%
+    },%
+    IfValueT={#3}{label={rema:#3}},%
+    nameref={#2}, tcbexastyle, #1%
+}
+
+\DeclareDocumentEnvironment{chdremark}%
+  { D<>{1-} O{} m !O{} }{%
+    \begin{actionenv}<#1>%
+    \begin{chdoriginalremark}[#2]{#3}[#4]%
+}{\end{chdoriginalremark}\end{actionenv}}
+
+% 智能引用设置
+\Crefname{chd@remark@count}%
+  {\chd@theonameremark}%
+  {\chd@theonameremark@pl}
+
+% ----------------
+% 特殊环境：proof
+% ----------------
+\providecommand\pushQED{\def\chd@qed}
+\providecommand\popQED{\chd@qed}
+\providecommand\qed{\ensuremath{\square}}
+
+\DeclareTColorBox[use counter=chd@proof@count,%
+  no counter]{chdoriginalproof}{ O{} m !O{} }{%
+    title={%
+      \ifblank{#2}{\chd@theonameproof}{#2}\@addpunct{.}%
+    },%
+    IfValueT={#3}{label={proof:#3}},%
+    nameref={#2}, tcbexastyle, #1%
+}
+
+\DeclareDocumentEnvironment{chdproof}%
+  { D<>{1-} O{} m !O{} }{%
+    \begin{actionenv}<#1>%
+    \begin{chdoriginalproof}[#2]{#3}[#4]%
+    \pushQED{\qed}%
+}{\popQED\end{chdoriginalproof}\end{actionenv}}
+
+% 智能引用设置
+\Crefname{chd@proof@count}%
+  {\chd@theonameproof}%
+  {\chd@theonameproof@pl}
+
+\endinput
