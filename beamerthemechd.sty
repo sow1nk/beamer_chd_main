@@ -12,6 +12,11 @@
 \definecolor{blue}{RGB}{60,69,147} % chd
 \usecolortheme[RGB={60,69,147}]{structure}
 
+% 设置西文字体为Kurier
+\RequirePackage{fontspec}
+\setsansfont{Kurier-Bold} % 设置无衬线字体为Kurier
+\setsansfont[author={Regular}]{Kurier} % 设置无衬线字体为Kurier Regular
+
 % 设置图注样式
 \usepackage{caption}
 \captionsetup{
@@ -84,9 +89,9 @@
     \hspace{1em}
     \insertframenumber/\inserttotalframenumber
     \hspace{1em}
-    {\usebeamercolor[fg]{title}\insertshorttitle}
-    \hspace{1em}
     \insertshortauthor
+    \hspace{1em}
+    {\usebeamercolor[fg]{title}\insertshorttitle}
   \end{beamercolorbox}
 }
 

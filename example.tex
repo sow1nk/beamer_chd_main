@@ -17,10 +17,10 @@
 
 \usepackage[colorful,cn]{chdtheoremstyle} % 定理环境 配色和语言选项
 
-\title{CHD Beamer Template}
+\title[CHD Beamer Template]{A brief example in English \\ \normalsize{For CHD Beamer Theme}}
 \author{\textbf{Ruixiao Xu}}
 \institute{School of Information Engineering\\Chang'an University}
-\date{\today}
+\date{\textbf{\today}}
 
 \begin{document}
 
@@ -150,53 +150,82 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{\underline{CHD Theorem Environments}}
+\begin{frame}{\underline{Theorem Environments}}
   % 例子环境 - 用于展示具体实例
-  \begin{chdexample}{chdexample 环境示例}
-    这是一个 \texttt{chdexample} 环境的示例。
+  \begin{chdexample}{求解二次方程}
+    求解方程 $x^2 - 5x + 6 = 0$ 的根。
+    
+    解：使用求根公式，$x = \frac{5 \pm \sqrt{25-24}}{2} = \frac{5 \pm 1}{2}$
+    
+    因此 $x_1 = 3, x_2 = 2$。
   \end{chdexample}
   % 定理环境 - 用于重要的数学定理
-  \begin{chdtheorem}{chdtheorem 环境定理}
-    这是一个 \texttt{chdtheorem} 环境的示例。
+  \begin{chdtheorem}{勾股定理}
+    在直角三角形中，直角边的平方和等于斜边的平方。
+    
+    即：$a^2 + b^2 = c^2$
+    
+    其中 $c$ 为斜边，$a, b$ 为直角边。
   \end{chdtheorem}
-  % 注释环境 - 用于补充说明
-  \begin{chdremark}{chdremark 环境注释}
-    这是一个 \texttt{chdremark} 环境的示例。
-  \end{chdremark}
-  % 证明环境 - 用于数学证明
-  \begin{chdproof}{chdproof 环境证明}
-    这是一个 \texttt{chdproof} 环境的示例。
-  \end{chdproof}
 \end{frame}
 
-\begin{frame}{\underline{CHD Theorem Environments}}
+\begin{frame}{\underline{Theorem Environments}}
   % 性质环境 - 用于描述数学性质
-  \begin{chdproperty}{chdproperty 环境性质}
-    这是一个 \texttt{chdproperty} 环境的示例。
+  \begin{chdproperty}{实数的性质}
+    对于任意实数 $a, b, c$，有以下性质：
+    \begin{itemize}
+      \item 交换律：$a + b = b + a$
+      \item 结合律：$(a + b) + c = a + (b + c)$
+      \item 分配律：$a(b + c) = ab + ac$
+    \end{itemize}
   \end{chdproperty}
   % 命题环境 - 用于数学命题
-  \begin{chdproposition}{chdproposition 环境命题}
-    这是一个 \texttt{chdproposition} 环境的示例。
+  \begin{chdproposition}{素数的无穷性}
+    存在无穷多个素数。
   \end{chdproposition}
+\end{frame}
+
+\begin{frame}{\underline{Theorem Environments}}
   % 算法环境 - 用于描述算法步骤
-  \begin{chdalgorithm}{chdalgorithm 环境算法}
-    这是一个 \texttt{chdalgorithm} 环境的示例。
+  \begin{chdalgorithm}{冒泡排序}
+    \textbf{输入：}数组 $A[1...n]$
+    
+    \textbf{步骤：}
+    \begin{enumerate}
+      \item for $i = 1$ to $n-1$ do
+      \item \quad for $j = 1$ to $n-i$ do
+      \item \quad\quad if $A[j] > A[j+1]$ then swap($A[j], A[j+1]$)
+    \end{enumerate}
+    
+    \textbf{时间复杂度：}$O(n^2)$
   \end{chdalgorithm}
   % 公理环境 - 用于数学公理
-  \begin{chdaxiom}{chdaxiom 环境公理}
-    这是一个 \texttt{chdaxiom} 环境的示例。
+  \begin{chdaxiom}{选择公理}
+    对于任意非空集合的集合 $\mathcal{F}$，存在选择函数 $f$，使得对于 $\mathcal{F}$ 中每个非空集合 $S$，都有 $f(S) \in S$。
   \end{chdaxiom}
 \end{frame}
 
-\begin{frame}{\underline{CHD Theorem Environments}}
+\begin{frame}{\underline{Theorem Environments}}
   % 条件环境 - 用于描述数学条件
-  \begin{chdcondition}{chdcondition 环境条件}
-    这是一个 \texttt{chdcondition} 环境的示例。
+  \begin{chdcondition}{连续函数的条件}
+    函数 $f: \mathbb{R} \to \mathbb{R}$ 在点 $x_0$ 连续当且仅当：
+    $$\lim_{x \to x_0} f(x) = f(x_0)$$
   \end{chdcondition}
   % 引理环境 - 用于辅助证明
-  \begin{chdlemma}{chdlemma 环境引理}
-    这是一个 \texttt{chdlemma} 环境的示例。
+  \begin{chdlemma}{Zorn引理}
+    若偏序集合的每个全序子集都有上界，则该偏序集合有极大元。
   \end{chdlemma}
+\end{frame}
+
+\begin{frame}{\underline{Theorem Environments}}
+  % 注释环境 - 用于补充说明
+  \begin{chdremark}{关于定理环境的说明}
+    本模板提供了丰富的定理环境，支持自动编号和交叉引用。
+  \end{chdremark}
+  % 证明环境 - 用于数学证明
+  \begin{chdproof}{勾股定理的证明}
+    考虑边长为 $a+b$ 的正方形，可以用两种方式计算其面积...
+  \end{chdproof}
 \end{frame}
 
 \begin{frame}
