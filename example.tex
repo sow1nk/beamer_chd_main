@@ -9,9 +9,14 @@
 \usefonttheme[onlymath]{serif}  % 仅数学公式使用衬线字体
 \usepackage{calligra} % 手写体
 \usepackage{tcolorbox}
+\usepackage{booktabs} % 三线表格
+\usepackage{tabularx} % 自适应宽度表格
+\usepackage{array} % 表格列格式扩展
+\usepackage{adjustbox} % 表格调整
+\usepackage{longtable} % 长表格
 
 \title{CHD Beamer Template}
-\author{Ruixiao Xu}
+\author{\textbf{Ruixiao Xu}}
 \institute{School of Information Engineering\\Chang'an University}
 \date{\today}
 
@@ -97,7 +102,7 @@
       \begin{figure}
         \centering
         \includegraphics[width=0.9\textwidth]{sources/fig1.jpg}
-        \caption{图片1展示}
+        \caption{色狗}
       \end{figure}
     \end{column}
     
@@ -107,12 +112,40 @@
       \begin{figure}
         \centering
         \includegraphics[width=0.9\textwidth]{sources/fig2.jpg}
-        \caption{图片2展示}
+        \caption{略略略}
       \end{figure}
     \end{column}
   \end{columns}
   
   \vspace{0.5cm}
+\end{frame}
+
+\begin{frame}{\underline{Three-Line Table Demo}}
+  \centering
+  
+\begin{table}[h]
+  \centering
+  \caption{Table Caption Example}
+  \begin{adjustbox}{width=0.5\textwidth,center}
+    \begin{tabular}{c|c|c|c|c}
+      \toprule
+      \textbf{表头} & \textbf{T1} & \textbf{T2} & \textbf{T3} & \textbf{T4} \\
+      \midrule
+      base & 50 & 12.34 & 2.15 & - \\
+      A & 45 & 15.67 & 2.89 & 0.032 \\
+      B & 48 & 18.92 & 3.21 & 0.001 \\
+      C & 52 & 21.45 & 2.76 & <0.001 \\
+      \bottomrule
+    \end{tabular}
+  \end{adjustbox}
+\end{table} 
+  \vspace{0.3cm}
+  
+  \begin{itemize}
+    \item 使用\texttt{\textcolor{blue}{table}}环境包裹表格
+    \item \texttt{\textcolor{red}{adjustbox}}宏包动态调整表格大小和位置
+    \item \texttt{\textcolor{green}{tabular}}环境创建表格结构
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
