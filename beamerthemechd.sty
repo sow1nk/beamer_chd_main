@@ -14,8 +14,10 @@
 
 % 设置西文字体为Kurier
 \RequirePackage{fontspec}
-\setsansfont{Kurier-Bold} % 设置无衬线字体为Kurier
-\setsansfont[author={Regular}]{Kurier} % 设置无衬线字体为Kurier Regular
+\RequirePackage{fontspec}
+\setsansfont[
+  BoldFont={Kurier-Bold}
+]{Kurier}
 
 % 设置图注样式
 \usepackage{caption}
