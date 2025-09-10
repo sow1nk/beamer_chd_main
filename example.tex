@@ -41,23 +41,37 @@
   A matrix $A$ is called normal, if $AA^*=A^*\mskip-2muA$.
 \end{frame}
 
-\section{section 2}
-\subsection{section 2.2}
-\begin{frame}{\underline{Theorem environments}}
-
-  \begin{theorem}[Sample theorem]
-    Hello, there
-  \end{theorem}
-
-  \begin{proof}
-    Let $x \in \mathbb{R}$. Assume $x > 0$. Then, we have
-    \begin{equation}
-      x^2 > 0.
-    \end{equation}
-    Proved.
-  \end{proof}
+\begin{frame}{\underline{Step-by-Step Display}}
+  \begin{itemize}
+    \item First point: This is the first item to appear
+    \pause
+    \item Second point: This is the second item to appear
+    \pause  
+    \item Third point: This is the third item to appear
+    \pause
+  \end{itemize}
+  
+  \vspace{0.5cm}
+  
+  Now let's show a mathematical formula:
+  \pause
+  \begin{equation}
+    E = mc^2
+  \end{equation}
+  \pause
+  
+  Finally, here's an important note:
+  \pause
+  \begin{alertblock}{Important Tip}
+    Use the \texttt{\textbackslash pause} command to control step-by-step display!
+  \end{alertblock}
 \end{frame}
 
+\section{section 2}
+\subsection{Point-by-Point}
+\begin{frame}
+  \subsectionpage
+\end{frame}
 \begin{frame}{\underline{Enumerate and itemize}}
   \begin{enumerate}
     \item Hello
@@ -74,28 +88,6 @@
 
 \begin{frame}{\underline{Blocks}}
   \itshape\lipsum[3]
-\end{frame}
-
-\begin{frame}{\underline{Blocks}}
-  \begin{block}{Example}
-    This is a normal block in beamer.
-  \end{block}
-
-  \begin{exampleblock}{Example}
-    This is an example block in beamer.
-  \end{exampleblock}
-
-  \begin{alertblock}{Example}
-    This is an alert block in beamer.
-  \end{alertblock}
-
-  \begin{tcolorbox}
-    This is a tcolorbox.
-  \end{tcolorbox}
-
-  \begin{tcolorbox}[colframe=purple!70,colback=red!10]
-    This is a tcolorbox with red frame.
-  \end{tcolorbox}
 \end{frame}
 
 \begin{frame}{\underline{Two-Column Image Display}}
@@ -122,7 +114,7 @@
   \vspace{0.5cm}
 \end{frame}
 
-\begin{frame}{\underline{Three-Line Table Demo}}
+\begin{frame}{\underline{Three-Line Table}}
   \centering
   
 \begin{table}[h]
@@ -150,8 +142,55 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{\underline{Theorem Environments}}
-  % 例子环境 - 用于展示具体实例
+\subsection{Blocks Comparison}
+\begin{frame}
+  \subsectionpage
+\end{frame}
+\begin{frame}{\underline{Blocks}}
+  \begin{block}{Example}
+    This is a normal block in beamer.
+  \end{block}
+
+  \begin{exampleblock}{Example}
+    This is an example block in beamer.
+  \end{exampleblock}
+
+  \begin{alertblock}{Example}
+    This is an alert block in beamer.
+  \end{alertblock}
+
+  \begin{tcolorbox}
+    This is a tcolorbox.
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[colframe=purple!70,colback=red!10]
+    This is a tcolorbox with red frame.
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Alert}}
+  % 自定义alert环境
+  \begin{chdalert}{重要警告}
+    使用本模板时请注意：
+    \begin{itemize}
+      \item 与\textcolor{red}{remark block一致}
+    \end{itemize}
+  \end{chdalert}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer alertblock
+  \begin{alertblock}{Standard Beamer Alert}
+    这是标准的Beamer \texttt{alertblock}，用于对比。
+    \begin{itemize}
+      \item $\dots$
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+
+\begin{frame}{\underline{Block Comparison - Example}}
+  % 自定义example环境
   \begin{chdexample}{求解二次方程}
     求解方程 $x^2 - 5x + 6 = 0$ 的根。
     
@@ -159,7 +198,21 @@
     
     因此 $x_1 = 3, x_2 = 2$。
   \end{chdexample}
-  % 定理环境 - 用于重要的数学定理
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer exampleblock
+  \begin{exampleblock}{Standard Beamer Example}
+    这是标准的Beamer \texttt{exampleblock}。
+    
+    同样的例子：$x^2 - 5x + 6 = 0$
+    
+    解：$x_1 = 3, x_2 = 2$
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Theorem}}
+  % 自定义theorem环境
   \begin{chdtheorem}{勾股定理}
     在直角三角形中，直角边的平方和等于斜边的平方。
     
@@ -167,10 +220,39 @@
     
     其中 $c$ 为斜边，$a, b$ 为直角边。
   \end{chdtheorem}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block（因为没有theorem block）
+  \begin{block}{Standard Block (as Theorem)}
+    标准Beamer没有专门的定理块，所以使用普通的\texttt{block}。
+    
+    即：$a^2 + b^2 = c^2$
+    
+    其中 $c$ 为斜边，$a, b$ 为直角边。
+  \end{block}
 \end{frame}
 
-\begin{frame}{\underline{Theorem Environments}}
-  % 性质环境 - 用于描述数学性质
+\begin{frame}{\underline{Block Comparison - Definition}}
+  % 自定义definition环境
+  \begin{chddefinition}{连续函数}
+    函数 $f: \mathbb{R} \to \mathbb{R}$ 在点 $x_0$ 连续当且仅当：
+    $$\lim_{x \to x_0} f(x) = f(x_0)$$
+  \end{chddefinition}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block作为定义
+  \begin{block}{Standard Block (as Definition)}
+    使用标准\texttt{block}来表示定义：
+    
+    函数 $f: \mathbb{R} \to \mathbb{R}$ 在点 $x_0$ 连续当且仅当：
+    $$\lim_{x \to x_0} f(x) = f(x_0)$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Property}}
+  % 自定义property环境
   \begin{chdproperty}{实数的性质}
     对于任意实数 $a, b, c$，有以下性质：
     \begin{itemize}
@@ -179,14 +261,81 @@
       \item 分配律：$a(b + c) = ab + ac$
     \end{itemize}
   \end{chdproperty}
-  % 命题环境 - 用于数学命题
-  \begin{chdproposition}{素数的无穷性}
-    存在无穷多个素数。
-  \end{chdproposition}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block作为性质
+  \begin{block}{Standard Block (as Property)}
+    使用标准\texttt{block}来表示性质：
+    \begin{itemize}
+      \item 交换律：$a + b = b + a$
+      \item 结合律：$(a + b) + c = a + (b + c)$
+      \item 分配律：$a(b + c) = ab + ac$
+    \end{itemize}
+  \end{block}
 \end{frame}
 
-\begin{frame}{\underline{Theorem Environments}}
-  % 算法环境 - 用于描述算法步骤
+\begin{frame}{\underline{Block Comparison - Proposition}}
+  % 自定义proposition环境
+  \begin{chdproposition}{素数的无穷性}
+    存在无穷多个素数。
+    
+    \textbf{简要说明：}假设只有有限个素数 $p_1, p_2, \ldots, p_n$，
+    考虑数 $N = p_1 p_2 \cdots p_n + 1$，则 $N$ 不被任何 $p_i$ 整除，
+    因此 $N$ 要么是素数，要么有新的素数因子。
+  \end{chdproposition}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block作为命题
+  \begin{block}{Standard Block (as Proposition)}
+    使用标准\texttt{block}来表示命题：
+    
+    存在无穷多个素数。（证明略）
+  \end{block}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Condition}}
+  % 自定义condition环境
+  \begin{chdcondition}{连续函数的条件}
+    函数 $f: \mathbb{R} \to \mathbb{R}$ 在点 $x_0$ 连续当且仅当：
+    $$\lim_{x \to x_0} f(x) = f(x_0)$$
+    
+    等价地，对于任意 $\varepsilon > 0$，存在 $\delta > 0$ 使得：
+    $$|x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \varepsilon$$
+  \end{chdcondition}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block作为条件
+  \begin{block}{Standard Block (as Condition)}
+    使用标准\texttt{block}来表示条件：
+    
+    连续性条件：$\lim_{x \to x_0} f(x) = f(x_0)$
+  \end{block}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Lemma}}
+  % 自定义lemma环境
+  \begin{chdlemma}{Zorn引理}
+    若偏序集合的每个全序子集都有上界，则该偏序集合有极大元。
+    
+    \textbf{应用：}Zorn引理在抽象代数和泛函分析中有重要应用，
+    如证明每个向量空间都有基，每个环都有极大理想等。
+  \end{chdlemma}
+  
+  \vspace{0.3cm}
+  
+  % 标准Beamer block作为引理
+  \begin{block}{Standard Block (as Lemma)}
+    使用标准\texttt{block}来表示引理：
+    
+    Zorn引理：若偏序集合的每个全序子集都有上界，则该偏序集合有极大元。
+  \end{block}
+\end{frame}
+
+\begin{frame}{\underline{Block Comparison - Algorithm}}
+  % 自定义algorithm环境
   \begin{chdalgorithm}{冒泡排序}
     \textbf{输入：}数组 $A[1...n]$
     
@@ -199,33 +348,39 @@
     
     \textbf{时间复杂度：}$O(n^2)$
   \end{chdalgorithm}
-  % 公理环境 - 用于数学公理
-  \begin{chdaxiom}{选择公理}
-    对于任意非空集合的集合 $\mathcal{F}$，存在选择函数 $f$，使得对于 $\mathcal{F}$ 中每个非空集合 $S$，都有 $f(S) \in S$。
-  \end{chdaxiom}
+  
+  \vspace{0.2cm}
+  
+  % 使用exampleblock展示算法
+  \begin{exampleblock}{Standard Beamer Algorithm}
+    标准Beamer使用\texttt{exampleblock}来展示算法：
+    $\dots$
+  \end{exampleblock}
 \end{frame}
 
-\begin{frame}{\underline{Theorem Environments}}
-  % 条件环境 - 用于描述数学条件
-  \begin{chdcondition}{连续函数的条件}
-    函数 $f: \mathbb{R} \to \mathbb{R}$ 在点 $x_0$ 连续当且仅当：
-    $$\lim_{x \to x_0} f(x) = f(x_0)$$
-  \end{chdcondition}
-  % 引理环境 - 用于辅助证明
-  \begin{chdlemma}{Zorn引理}
-    若偏序集合的每个全序子集都有上界，则该偏序集合有极大元。
-  \end{chdlemma}
-\end{frame}
-
-\begin{frame}{\underline{Theorem Environments}}
-  % 注释环境 - 用于补充说明
-  \begin{chdremark}{关于定理环境的说明}
-    本模板提供了丰富的定理环境，支持自动编号和交叉引用。
-  \end{chdremark}
-  % 证明环境 - 用于数学证明
+\begin{frame}{\underline{Block Comparison - Proof}}
+  % 自定义proof环境
   \begin{chdproof}{勾股定理的证明}
-    考虑边长为 $a+b$ 的正方形，可以用两种方式计算其面积...
+    考虑边长为 $a+b$ 的正方形，可以用两种方式计算其面积。
+    
+    第一种：$(a+b)^2 = a^2 + 2ab + b^2$
+    
+    第二种：大正方形面积等于中间正方形加上四个直角三角形的面积：
+    $c^2 + 4 \times \frac{1}{2}ab = c^2 + 2ab$
+    
+    因此：$a^2 + 2ab + b^2 = c^2 + 2ab$，得 $a^2 + b^2 = c^2$
   \end{chdproof}
+  
+  \vspace{0.2cm}
+  
+  % 标准block作为证明
+  \begin{block}{Standard Block (as Proof)}
+    标准Beamer使用普通的\texttt{block}来表示证明。
+    
+    考虑边长为 $a+b$ 的正方形，可以用两种方式计算其面积...
+    
+    因此得证：$a^2 + b^2 = c^2$
+  \end{block}
 \end{frame}
 
 \begin{frame}

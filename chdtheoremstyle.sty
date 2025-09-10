@@ -22,6 +22,7 @@
 \providecolor{BlockDefinitionC}{RGB}{22,88,165} % 定义块颜色  
 \providecolor{BlockLemmaC}{RGB}{0,153,0}        % 引理块颜色
 \providecolor{BlockConditionC}{RGB}{255,140,0}  % 条件块颜色
+\providecolor{BlockAlertC}{RGB}{201,90,92}      % 警告块颜色
 
 % ----------------
 % 选项处理
@@ -59,6 +60,7 @@
   \def\chd@theonameassumption {假设}
   \def\chd@theonameremark     {注}
   \def\chd@theonameproof      {证明}
+  \def\chd@theonamealert      {警告}
   %
   \def\chd@theonametheorem@pl    {定理}
   \def\chd@theonameexample@pl    {例}
@@ -74,6 +76,7 @@
   \def\chd@theonameassumption@pl {假设}
   \def\chd@theonameremark@pl     {注}
   \def\chd@theonameproof@pl      {证明}
+  \def\chd@theonamealert@pl      {警告}
 \else
   % 英文名称
   \def\chd@theonametheorem    {Theorem}
@@ -90,6 +93,7 @@
   \def\chd@theonameassumption {Assumption}
   \def\chd@theonameremark     {Remark}
   \def\chd@theonameproof      {Proof}
+  \def\chd@theonamealert      {Alert}
   %
   \def\chd@theonametheorem@pl    {Theorems}
   \def\chd@theonameexample@pl    {Examples}
@@ -105,6 +109,7 @@
   \def\chd@theonameassumption@pl {Assumptions}
   \def\chd@theonameremark@pl     {Remarks}
   \def\chd@theonameproof@pl      {Proofs}
+  \def\chd@theonamealert@pl      {Alerts}
 \fi
 
 % ----------------
@@ -174,18 +179,21 @@
   \chd@tcbstyletheo{def}{BlockDefinitionC}
   \chd@tcbstyletheo{lem}{BlockLemmaC}
   \chd@tcbstyletheo{cond}{BlockConditionC}
+  \chd@tcbstyletheo{alert}{BlockAlertC}
 \else\ifchdtheorem@followtheme
   \chd@tcbstyletheo{theo}{PrimaryC}
   \chd@tcbstyletheo{exa}{PrimaryC}
   \chd@tcbstyletheo{def}{PrimaryC}
   \chd@tcbstyletheo{lem}{PrimaryC}
   \chd@tcbstyletheo{cond}{PrimaryC}
+  \chd@tcbstyletheo{alert}{PrimaryC}
 \else\ifchdtheorem@allgrey
   \chd@tcbstyletheo{theo}{BlockExampleC}
   \chd@tcbstyletheo{exa}{BlockExampleC}
   \chd@tcbstyletheo{def}{BlockExampleC}
   \chd@tcbstyletheo{lem}{BlockExampleC}
   \chd@tcbstyletheo{cond}{BlockExampleC}
+  \chd@tcbstyletheo{alert}{BlockExampleC}
 \fi\fi\fi
 
 % ----------------
@@ -205,6 +213,7 @@
 \newcounter{chd@assumption@count}
 \newcounter{chd@remark@count}
 \newcounter{chd@proof@count}
+\newcounter{chd@alert@count}
 
 % ----------------
 % 定理环境创建函数
@@ -278,6 +287,7 @@
 \chd@theo{condition}  {tcbcond}{cond}
 \chd@theo{conclusion} {tcblem} {conc}
 \chd@theo{assumption} {tcbcond}{assu}
+\chd@theo{alert}      {tcbalert}{alert}
 
 % ----------------
 % 特殊环境：remark
